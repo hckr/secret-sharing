@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Secret sharing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Secret sharing and recovery – multiple groups with (n,m) schemes (A. Shamir scheme)</h1>
+    
+    <label>mod p: <input id="p-input" name="p" class="long" disabled></label>
+    
+    <h2>Secret sharing</h2>
+    
+    <h3>Input</h3>
+    
+    <form id="secret-sharing-form">
+        <label>Secret: <input id="secret-input" name="secret" class="long"></label><button id="random-secret-button" type="button">random secret</button>
+        <label>Number of groups: <input value="3" disabled></label>
+        
+        <fieldset>
+            <legend>First group</legend>
+            <label>Number of shadows: <input name="shadows-count-1" value="6"></label>
+            <label>Shadows needed to recover a secret: <input name="shadows-needed-1" value="3"></label>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Second group</legend>
+            <label>Number of shadows: <input name="shadows-count-2" value="4"></label>
+            <label>Shadows needed to recover a secret: <input name="shadows-needed-2" value="3"></label>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Third group</legend>
+            <label>Number of shadows: <input name="shadows-count-3" value="10"></label>
+            <label>Shadows needed to recover a secret: <input name="shadows-needed-3" value="6"></label>
+        </fieldset>
+        
+        <button>Generate sharing scheme and shadows</button>
+    </form>
+    
+    <h3>Result</h3>
+    
+    <fieldset>
+        <legend>First group</legend>
+        
+        <label>Group secret: <input id="result-secret-1" class="long" readonly></label>
+        
+        <label>Shadows (for x = 1, 2, ...):
+            <textarea id="result-shadows-1" readonly></textarea>
+        </label>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Second group</legend>
+        
+        <label>Group secret: <input id="result-secret-2" class="long" readonly></label>
+        
+        <label>Shadows (for x = 1, 2, ...):
+            <textarea id="result-shadows-2" readonly></textarea>
+        </label>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Third group</legend>
+        
+        <label>Group secret: <input id="result-secret-3" class="long" readonly></label>
+        
+        <label>Shadows (for x = 1, 2, ...):
+            <textarea id="result-shadows-3" readonly></textarea>
+        </label>
+    </fieldset>
+    
+    <h2>Secret recovery</h2>
+    
+    <h3>Input</h3>
+    
+    <form id="secret-recovery-form">
+        <label>Number of groups: <input value="3" disabled></label>
+        
+        <fieldset>
+            <legend>First group</legend>
+            <label>Shadows:
+                <textarea name="shadows-1"></textarea>
+            </label>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Second group</legend>
+            <label>Shadows:
+                <textarea name="shadows-2"></textarea>
+            </label>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Third group</legend>
+            <label>Shadows:
+                <textarea name="shadows-3"></textarea>
+            </label>
+        </fieldset>
+        
+        <button>Recover secret</button>
+    </form>
+    
+    <h3>Result</h3>
+    
+    <label>First group secret: <input id="result-group-secret-1" class="long" readonly></label>
+    <label>Second group secret: <input id="result-group-secret-2" class="long" readonly></label>
+    <label>Third group secret: <input id="result-group-secret-3" class="long" readonly></label>
+    <label>Original secret: <input id="result-secret" class="long" readonly></label>
+    
+    <script src="https://peterolson.github.io/BigInteger.js/BigInteger.min.js"></script>
+    <script src="lib.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
