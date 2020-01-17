@@ -32,3 +32,11 @@ textarea {
 button {
     margin: 10px;
 }
+
+.footer {
+    padding: 20px;
+}
+
+a {
+    color: #33a;
+}
